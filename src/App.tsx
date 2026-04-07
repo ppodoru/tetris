@@ -860,61 +860,47 @@ function App() {
         <div className="mobile-controls">
           <button 
             className="mobile-btn btn-hold" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('hold'); }} 
-            onTouchEnd={() => handleTouchEnd('hold')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('hold'); }}
-            onMouseUp={() => handleTouchEnd('hold')}
-            onMouseLeave={() => handleTouchEnd('hold')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('hold'); }} 
+            onPointerUp={() => handleTouchEnd('hold')}
+            onPointerLeave={() => handleTouchEnd('hold')}
           >H</button>
           <div />
           <button 
             className="mobile-btn btn-ccw" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('rotateCCW'); }} 
-            onTouchEnd={() => handleTouchEnd('rotateCCW')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('rotateCCW'); }}
-            onMouseUp={() => handleTouchEnd('rotateCCW')}
-            onMouseLeave={() => handleTouchEnd('rotateCCW')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('rotateCCW'); }} 
+            onPointerUp={() => handleTouchEnd('rotateCCW')}
+            onPointerLeave={() => handleTouchEnd('rotateCCW')}
           >↺</button>
           <button 
             className="mobile-btn btn-cw" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('rotateCW'); }} 
-            onTouchEnd={() => handleTouchEnd('rotateCW')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('rotateCW'); }}
-            onMouseUp={() => handleTouchEnd('rotateCW')}
-            onMouseLeave={() => handleTouchEnd('rotateCW')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('rotateCW'); }} 
+            onPointerUp={() => handleTouchEnd('rotateCW')}
+            onPointerLeave={() => handleTouchEnd('rotateCW')}
           >↻</button>
           
           <button 
             className="mobile-btn btn-left" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('left'); }} 
-            onTouchEnd={() => handleTouchEnd('left')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('left'); }}
-            onMouseUp={() => handleTouchEnd('left')}
-            onMouseLeave={() => handleTouchEnd('left')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('left'); }} 
+            onPointerUp={() => handleTouchEnd('left')}
+            onPointerLeave={() => handleTouchEnd('left')}
           >←</button>
           <button 
             className="mobile-btn btn-down" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('down'); }} 
-            onTouchEnd={() => handleTouchEnd('down')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('down'); }}
-            onMouseUp={() => handleTouchEnd('down')}
-            onMouseLeave={() => handleTouchEnd('down')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('down'); }} 
+            onPointerUp={() => handleTouchEnd('down')}
+            onPointerLeave={() => handleTouchEnd('down')}
           >↓</button>
           <button 
             className="mobile-btn btn-right" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('right'); }} 
-            onTouchEnd={() => handleTouchEnd('right')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('right'); }}
-            onMouseUp={() => handleTouchEnd('right')}
-            onMouseLeave={() => handleTouchEnd('right')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('right'); }} 
+            onPointerUp={() => handleTouchEnd('right')}
+            onPointerLeave={() => handleTouchEnd('right')}
           >→</button>
           <button 
             className="mobile-btn btn-hard" 
-            onTouchStart={(e) => { e.preventDefault(); handleTouchStart('hardDrop'); }} 
-            onTouchEnd={() => handleTouchEnd('hardDrop')}
-            onMouseDown={(e) => { if (e.button === 0) handleTouchStart('hardDrop'); }}
-            onMouseUp={() => handleTouchEnd('hardDrop')}
-            onMouseLeave={() => handleTouchEnd('hardDrop')}
+            onPointerDown={(e) => { e.preventDefault(); handleTouchStart('hardDrop'); }} 
+            onPointerUp={() => handleTouchEnd('hardDrop')}
+            onPointerLeave={() => handleTouchEnd('hardDrop')}
           >⤓</button>
         </div>
       )}
