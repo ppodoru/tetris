@@ -141,7 +141,7 @@ const TetrisBoard: React.FC<TetrisBoardProps> = ({ engine }) => {
         ref={canvasRef}
         width={COLS * BLOCK_SIZE}
         height={ROWS * BLOCK_SIZE}
-        style={{ border: '2px solid #333', backgroundColor: '#111' }}
+        className="game-canvas"
       />
 
       <div className="board-info right">

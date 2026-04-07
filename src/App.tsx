@@ -297,6 +297,32 @@ function App() {
     }
   }, [playerEngine]);
 
+  // Touch controls logic for DAS / ARR
+  const handleTouchStart = (action: keyof KeyBindings) => {
+    const code = bindings[action][0];
+    handleInput(code);
+
+    if (action === 'left' || action === 'right' || action === 'down') {
+      dasTimeout.current[code] = window.setTimeout(() => {
+        arrInterval.current[code] = window.setInterval(() => {
+          handleInput(code);
+        }, ARR_INTERVAL);
+      }, DAS_DELAY);
+    }
+  };
+
+  const handleTouchEnd = (action: keyof KeyBindings) => {
+    const code = bindings[action][0];
+    if (dasTimeout.current[code]) {
+      clearTimeout(dasTimeout.current[code]!);
+      dasTimeout.current[code] = null;
+    }
+    if (arrInterval.current[code]) {
+      clearInterval(arrInterval.current[code]!);
+      arrInterval.current[code] = null;
+    }
+  };
+
   // Immediate sync when game starts or restarts to avoid delay
   useEffect(() => {
     if (isGameStarted && gameMode === 'remote') {
@@ -829,6 +855,21 @@ function App() {
           <TetrisBoard engine={cpuEngine} />
         </div>
       </div>
+
+      {isGameStarted && !isGameOver && (
+        <div className="mobile-controls">
+          <button className="mobile-btn btn-hold" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('hold'); }} onTouchEnd={() => handleTouchEnd('hold')}>H</button>
+          <div />
+          <button className="mobile-btn btn-ccw" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('rotateCCW'); }} onTouchEnd={() => handleTouchEnd('rotateCCW')}>↺</button>
+          <button className="mobile-btn btn-cw" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('rotateCW'); }} onTouchEnd={() => handleTouchEnd('rotateCW')}>↻</button>
+          
+          <button className="mobile-btn btn-left" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('left'); }} onTouchEnd={() => handleTouchEnd('left')}>←</button>
+          <button className="mobile-btn btn-down" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('down'); }} onTouchEnd={() => handleTouchEnd('down')}>↓</button>
+          <button className="mobile-btn btn-right" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('right'); }} onTouchEnd={() => handleTouchEnd('right')}>→</button>
+          <button className="mobile-btn btn-hard" onTouchStart={(e) => { e.preventDefault(); handleTouchStart('hardDrop'); }} onTouchEnd={() => handleTouchEnd('hardDrop')}>⤓</button>
+        </div>
+      )}
+
       <div className="controls">
         <p>
           <kbd>{getKeyDisplayName(bindings.left[0])}</kbd>

@@ -50,6 +50,118 @@ body {
   padding: 20px;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 800px) {
+  #root {
+    justify-content: flex-start;
+    padding-top: 20px;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .game-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .game-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .player-side, .cpu-side {
+    width: 100%;
+    transform: scale(0.85);
+    margin: -30px 0;
+  }
+
+  .cpu-side {
+    transform: scale(0.6);
+    order: -1; /* Move CPU board to top */
+    margin-bottom: -80px;
+  }
+
+  .garbage-meter-container {
+    height: 100%;
+    max-height: 600px;
+  }
+
+  .start-screen-modal {
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .start-screen-modal .title {
+    font-size: 28px;
+  }
+
+  .start-buttons {
+    width: 100%;
+  }
+
+  .controls {
+    display: none; /* Hide keyboard hints on mobile */
+  }
+}
+
+/* Mobile Controls Styling */
+.mobile-controls {
+  display: none;
+  grid-template-areas: 
+    "hold . rotateCCW rotateCW"
+    "left down right hardDrop";
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .mobile-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mobile-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.mobile-btn:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0.95);
+}
+
+.mobile-btn.wide {
+  grid-column: span 1;
+}
+
+.btn-left { grid-area: left; }
+.btn-right { grid-area: right; }
+.btn-down { grid-area: down; }
+.btn-cw { grid-area: rotateCW; }
+.btn-ccw { grid-area: rotateCCW; }
+.btn-hard { grid-area: hardDrop; background: rgba(233, 69, 96, 0.3); border-color: #e94560; }
+.btn-hold { grid-area: hold; background: rgba(33, 150, 243, 0.3); border-color: #2196f3; }
+
 .player-side, .cpu-side {
   position: relative;
   display: flex;
@@ -85,6 +197,13 @@ body {
 
 .garbage-meter.danger {
   animation: blinkWarning 0.5s infinite;
+}
+
+.game-canvas {
+  border: 2px solid #333;
+  background-color: #111;
+  max-width: 100%;
+  height: auto;
 }
 
 .board-container {
