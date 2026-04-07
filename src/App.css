@@ -2,17 +2,17 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent body scrolling */
+  background-color: #1a1a1a;
+  overflow-x: hidden;
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1a1a1a;
   color: white;
   padding: 0;
 }
@@ -336,6 +336,9 @@ kbd {
   align-items: center;
   z-index: 2000;
   backdrop-filter: blur(5px);
+  overflow-y: auto; /* Allow scrolling if modal is too tall */
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .start-screen-modal {
